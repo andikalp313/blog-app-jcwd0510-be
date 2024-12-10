@@ -25,10 +25,27 @@ model Sample {
 model User {
   id        Int      @id @default(autoincrement())
   name      String
-  email     String
+  email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  blogs     Blog[]
 
   @@map("users")
+}
+
+model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  thumbnail   String
+  description String    @db.Text
+  category    String
+  userId      Int
+  user        User      @relation(fields: [userId], references: [id])
+  content     String    @db.Text
+  deletedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("blogs")
 }
