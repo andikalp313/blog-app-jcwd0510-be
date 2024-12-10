@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  ForgotPasswordController,
+  forgotPasswordController,
   LoginController,
   registerController,
 } from "../controller/auth.controller";
@@ -17,7 +17,7 @@ router.post("/login", validateLogin, LoginController);
 router.post(
   "/forgot-password",
   validateForgotPassword,
-  ForgotPasswordController
+  forgotPasswordController
 );
 
 export default router;

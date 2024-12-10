@@ -27,7 +27,7 @@ export const LoginController = async (
     next(error);
   }
 };
-export const ForgotPasswordController = async (
+export const forgotPasswordController = async (
   req: Request,
   res: Response,
   next: NextFunction
