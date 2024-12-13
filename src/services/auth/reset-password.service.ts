@@ -1,5 +1,5 @@
 import { hashPassword } from "../../lib/argon";
-import { prisma } from "../../lib/prisma";
+import prisma from "../../lib/prisma";
 
 export const resetPasswordService = async (
   userId: number,
