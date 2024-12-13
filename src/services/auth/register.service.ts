@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
-import { prisma } from "../../lib/prisma";
+
 import { hashPassword } from "../../lib/argon";
+import prisma from "../../lib/prisma";
 
 export const registerService = async (body: User) => {
   try {
@@ -12,7 +13,7 @@ export const registerService = async (body: User) => {
       },
     });
     if (existingUser) {
-      throw new Error("User already exists");
+      throw new Error("Email already exists");
     }
     const hashedPassword = await hashPassword(password);
     return await prisma.user.create({
