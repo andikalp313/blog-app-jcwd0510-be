@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createBlogController,
+  deleteBlogController,
   getBlogController,
   getBlogsController,
 } from "../controller/blog.controller";
@@ -21,5 +22,6 @@ router.post(
   validateCreateBlog,
   createBlogController
 );
+router.delete("/:id", verifyToken, deleteBlogController);
 
 export default router;
