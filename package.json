@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/index.js",
-    "dev": "nodemon src/index.ts ",
+    "start": "nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "test": "jest",
     "postinstall": "prisma generate"
   },
