@@ -27,6 +27,7 @@ export const getBlogsService = async (query: GetBlogQuery) => {
       skip: (page - 1) * take, //offset
       take: take, //limit
       orderBy: { [sortBy]: sortOrder }, // sorting
+      include: { user: { select: { name: true } } },
     });
 
     const count = await prisma.blog.count({ where: whereClause });

@@ -6,7 +6,8 @@
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
     "dev": "nodemon src/index.ts ",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
