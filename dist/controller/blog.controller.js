@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBlogController = exports.getBlogController = exports.getBlogsController = void 0;
+exports.deleteBlogController = exports.createBlogController = exports.getBlogController = exports.getBlogsController = void 0;
 const get_blogs_service_1 = require("../services/blog/get-blogs.service");
 const create_blog_service_1 = require("../services/blog/create-blog.service");
 const get_blog_service_1 = require("../services/blog/get-blog.service");
+const delete_blog_service_1 = require("../services/blog/delete-blog.service");
 const getBlogsController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const query = {
@@ -53,3 +54,15 @@ const createBlogController = (req, res, next) => __awaiter(void 0, void 0, void 
     }
 });
 exports.createBlogController = createBlogController;
+const deleteBlogController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = Number(req.params.id);
+        const userId = Number(res.locals.user.id);
+        const result = yield (0, delete_blog_service_1.deleteBlogService)(id, userId);
+        res.status(200).send(result);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+exports.deleteBlogController = deleteBlogController;
