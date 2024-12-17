@@ -31,6 +31,7 @@ const getBlogsService = (query) => __awaiter(void 0, void 0, void 0, function* (
             skip: (page - 1) * take, //offset
             take: take, //limit
             orderBy: { [sortBy]: sortOrder }, // sorting
+            include: { user: { select: { name: true } } },
         });
         const count = yield prisma_1.default.blog.count({ where: whereClause });
         return {
